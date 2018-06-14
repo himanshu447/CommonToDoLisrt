@@ -1,39 +1,31 @@
 {
   "project_info": {
-    "project_number": "7861948574",
-    "firebase_url": "https://todolistfirestore.firebaseio.com",
-    "project_id": "todolistfirestore",
-    "storage_bucket": "todolistfirestore.appspot.com"
+    "project_number": "322025107614",
+    "firebase_url": "https://authentication-fa658.firebaseio.com",
+    "project_id": "authentication-fa658",
+    "storage_bucket": "authentication-fa658.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:7861948574:android:6cb2962d11641e12",
+        "mobilesdk_app_id": "1:322025107614:android:6cb2962d11641e12",
         "android_client_info": {
           "package_name": "com.example.knoxpo.todolistfirestore"
         }
       },
       "oauth_client": [
         {
-          "client_id": "7861948574-qorpq5s3o3buqm15qm57na4ijavf5j5o.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.knoxpo.todolistfirestore",
-            "certificate_hash": "194e414c6e5be1f9abbedb2253405cf796396bfe"
-          }
-        },
-        {
-          "client_id": "7861948574-c39hq3tc6ppourbrvmoqsb7i57q6lcv6.apps.googleusercontent.com",
+          "client_id": "322025107614-1svh1od12474r4bbnna3har8j13lm8ht.apps.googleusercontent.com",
           "client_type": 3
         },
         {
-          "client_id": "7861948574-c39hq3tc6ppourbrvmoqsb7i57q6lcv6.apps.googleusercontent.com",
+          "client_id": "322025107614-1svh1od12474r4bbnna3har8j13lm8ht.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAql4S3QMHYlQOZy_dWYKkPW-UItMLWq4o"
+          "current_key": "AIzaSyAkE0lfWeY_bczY_on6AQfAk5RBE3xP7jQ"
         }
       ],
       "services": {
@@ -41,13 +33,43 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "7861948574-c39hq3tc6ppourbrvmoqsb7i57q6lcv6.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:322025107614:android:27ab2cc0be63457f",
+        "android_client_info": {
+          "package_name": "com.example.tejas.kotlinexample2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "322025107614-1svh1od12474r4bbnna3har8j13lm8ht.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "322025107614-1svh1od12474r4bbnna3har8j13lm8ht.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkE0lfWeY_bczY_on6AQfAk5RBE3xP7jQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2

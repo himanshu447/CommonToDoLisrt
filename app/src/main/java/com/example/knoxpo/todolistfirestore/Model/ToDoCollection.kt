@@ -4,13 +4,14 @@ class ToDoCollection {
 
     companion object {
 
-        const val NAME = "ToDoList"
+        const val NAME = "TodoList"
     }
 
     class Fields {
 
         companion object {
 
+            const val USERID = "userId"
             const val TITLE = "title"
             const val CHECKED = "isChecked"
         }

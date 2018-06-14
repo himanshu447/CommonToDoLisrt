@@ -10,8 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".activity.ToDoListAcitivty" >
+        <activity android:name=".activity.ToDoListAcitivty">
 
+
+        </activity>
+        <activity android:name=".activity.LoginActivtiy">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

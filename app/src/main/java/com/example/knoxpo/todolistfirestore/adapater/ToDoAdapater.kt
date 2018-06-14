@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
-import android.widget.ImageButton
+import android.widget.CompoundButton
 import android.widget.TextView
+import android.widget.Toast
 import com.example.knoxpo.todolistfirestore.Model.ToDoModel
 import com.example.knoxpo.todolistfirestore.R
 import kotlinx.android.synthetic.main.todo_list_row.view.*
-import java.util.ArrayList
 
 class ToDoAdapater(var mToDoList: List<ToDoModel>) : RecyclerView.Adapter<ToDoAdapater.MyViewHolder>() {
 
@@ -39,26 +39,22 @@ class ToDoAdapater(var mToDoList: List<ToDoModel>) : RecyclerView.Adapter<ToDoAd
         private val mTextViewTitle: TextView = itemView.textViewTitle
         private val mCheckBox: CheckBox? = itemView.checkBox
 
-        private val mImageButtonUpdate: ImageButton? = itemView.imageButtonUpdate
-        private val mImageButtonDelete: ImageButton? = itemView.imageButtonDelete
-
-
         fun bindData(mToDoModel: ToDoModel) {
 
 
             mTextViewTitle.text = mToDoModel.title
             mCheckBox?.isChecked = mToDoModel.isCheck!!
 
-            mImageButtonDelete?.setOnClickListener {
+            mCheckBox?.setOnClickListener {
 
-                onClickListener?.onClickDelete(mToDoModel,adapterPosition)
-            }
-
-            mImageButtonUpdate?.setOnClickListener {
-
-                onClickListener?.onClickUpdate(mToDoModel,adapterPosition)
+                onClickListener?.onClickUpdate(mToDoModel.id,mToDoModel.isCheck)
 
             }
+/*
+            mCheckBox?.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { compoundButton, b ->
+
+            })
+*/
 
         }
 
@@ -68,7 +64,7 @@ class ToDoAdapater(var mToDoList: List<ToDoModel>) : RecyclerView.Adapter<ToDoAd
     interface OnClickListener {
 
 
-        fun onClickUpdate(mToDoModel: ToDoModel,postion: Int)
+        fun onClickUpdate(mToDoModel: String?, check: Boolean?)
 
         fun onClickDelete(mToDoModel: ToDoModel, adapterPosition: Int)
     }
