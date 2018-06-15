@@ -50,11 +50,6 @@ class ToDoAdapater(var mToDoList: List<ToDoModel>) : RecyclerView.Adapter<ToDoAd
                 onClickListener?.onClickUpdate(mToDoModel.id,mToDoModel.isCheck)
 
             }
-/*
-            mCheckBox?.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { compoundButton, b ->
-
-            })
-*/
 
         }
 

@@ -80,7 +80,7 @@ class ToDoListFragment : Fragment(), ToDoAdapater.OnClickListener {
         val map: MutableMap<String, Any> = mutableMapOf(
                 ToDoCollection.Fields.TITLE to "Himanshu : - todo11$ : - $count",
                 ToDoCollection.Fields.CHECKED to false,
-                ToDoCollection.Fields.USERID to  "vIB6sB7GJCYiEL7MvY0OGpY9eBh2"
+                ToDoCollection.Fields.USERID to  mAuth.currentUser!!.uid
         )
         db.collection(ToDoCollection.NAME).add(map as Map<String, Any>)
         mToDoAdapater?.notifyDataSetChanged()
@@ -91,7 +91,6 @@ class ToDoListFragment : Fragment(), ToDoAdapater.OnClickListener {
     private fun fetchData() {
 
         db.collection(ToDoCollection.NAME)
-                .orderBy(ToDoCollection.Fields.TITLE)
                 .addSnapshotListener { querySnapshot, _ ->
                     mToDoList?.clear()
                     if (querySnapshot != null) {
