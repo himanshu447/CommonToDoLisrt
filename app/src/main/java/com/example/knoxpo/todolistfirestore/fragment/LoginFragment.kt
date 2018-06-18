@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.knoxpo.todolistfirestore.R
+import com.example.knoxpo.todolistfirestore.activity.TabActivity
 import com.example.knoxpo.todolistfirestore.activity.ToDoListAcitivty
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
@@ -40,7 +41,7 @@ class LoginFragment : Fragment() {
                         if(it.isSuccessful)
                         {
                             Toast.makeText(activity,"succesffuly login",Toast.LENGTH_SHORT).show()
-                            var intent = Intent(this.activity,ToDoListAcitivty::class.java)
+                            var intent = Intent(this.activity,TabActivity::class.java)
                             startActivity(intent)
                         }
                         else

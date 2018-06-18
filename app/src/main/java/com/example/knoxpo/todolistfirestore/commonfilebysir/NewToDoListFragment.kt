@@ -1,27 +1,22 @@
-package com.example.knoxpo.todolistfirestore.fragment
+package com.example.knoxpo.todolistfirestore.commonfilebysir
 
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.RecyclerView
 import android.view.*
 import android.widget.Toast
 import com.example.knoxpo.todolistfirestore.Model.ToDoCollection
-import com.example.knoxpo.todolistfirestore.Model.ToDoModel
 import com.example.knoxpo.todolistfirestore.R
 import com.example.knoxpo.todolistfirestore.activity.LoginActivtiy
-import com.example.knoxpo.todolistfirestore.adapater.ToDoAdapater
-import com.example.knoxpo.todolistfirestore.commonfilebysir.TodoListCommonFragment
+import com.example.knoxpo.todolistfirestore.fragment.Aleartdialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.fragment_todo_list.*
-import java.util.ArrayList
 
-class ToDoListFragment : CommonToDoList(), ToDoAdapater.OnClickListener {
+class NewToDoListFragment : TodoListCommonFragment() {
 
-    override val query: Query = FirebaseFirestore
+    override val query = FirebaseFirestore
             .getInstance()
             .collection(ToDoCollection.NAME)
             .whereEqualTo(
@@ -29,18 +24,28 @@ class ToDoListFragment : CommonToDoList(), ToDoAdapater.OnClickListener {
                     FirebaseAuth.getInstance().currentUser?.uid
             )
 
-
-    var db: FirebaseFirestore = FirebaseFirestore.getInstance()
-
-    var mAuth: FirebaseAuth = FirebaseAuth.getInstance()
-
     val REQUEST_CODE_FOR_DIALOG = 123
+
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater?.inflate(R.menu.logout, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+
+        if (item?.itemId == R.id.logout) {
+            FirebaseAuth.getInstance().signOut()
+            val intent = Intent(activity, LoginActivtiy::class.java)
+            startActivity(intent)
+
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -52,13 +57,17 @@ class ToDoListFragment : CommonToDoList(), ToDoAdapater.OnClickListener {
 
     private fun addData() {
 
+        val uid = FirebaseAuth.getInstance().currentUser!!.uid
+
         val map: MutableMap<String, Any> = mutableMapOf(
-                ToDoCollection.Fields.TITLE to "Himanshu : - todo11$ : - $count",
+                ToDoCollection.Fields.TITLE to "Himanshu : - todo11$ : - $count++",
                 ToDoCollection.Fields.CHECKED to false,
-                ToDoCollection.Fields.USERID to mAuth.currentUser!!.uid
+                ToDoCollection.Fields.USERID to uid
         )
-        db.collection(ToDoCollection.NAME).add(map as Map<String, Any>)
-        count++
+        FirebaseFirestore
+                .getInstance()
+                .collection(ToDoCollection.NAME)
+                .add(map as Map<String, Any>)
     }
 
 
@@ -74,24 +83,6 @@ class ToDoListFragment : CommonToDoList(), ToDoAdapater.OnClickListener {
 
     }
 
-
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater?.inflate(R.menu.logout, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-
-        if (item?.itemId == R.id.logout) {
-            FirebaseAuth.getInstance().signOut()
-            var intent = Intent(activity, LoginActivtiy::class.java)
-            startActivity(intent)
-
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 
 
@@ -103,7 +94,7 @@ class ToDoListFragment : CommonToDoList(), ToDoAdapater.OnClickListener {
             var ref: DocumentReference = FirebaseFirestore.getInstance().collection(ToDoCollection.NAME).document(model_id)
 
             val map : Map<String,Any> = mutableMapOf(
-                    "${ToDoCollection.Fields.SHARES}.$model" to  true
+                   "${ToDoCollection.Fields.SHARES}.$model" to  true
             )
             ref.update(map).addOnCompleteListener {
 
@@ -113,7 +104,4 @@ class ToDoListFragment : CommonToDoList(), ToDoAdapater.OnClickListener {
 
         }
     }
-
-
-
 }

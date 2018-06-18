@@ -22,8 +22,9 @@ class LoginActivtiy:SingleFragmentActivty() {
 
         if(currentuser!=null){
 
-            var intent = Intent(this,ToDoListAcitivty::class.java)
+            var intent = Intent(this,TabActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
     }

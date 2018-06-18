@@ -14,6 +14,8 @@ class ToDoCollection {
             const val USERID = "userId"
             const val TITLE = "title"
             const val CHECKED = "isChecked"
+            const val SHAREID = "shareId"
+            const val SHARES = "shares"
         }
     }
 }
